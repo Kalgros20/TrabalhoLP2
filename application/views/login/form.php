@@ -1,8 +1,9 @@
 <body>
+<br>
 <div class="container">
-    <div class="row">
-        
-            <form class="col-4">
+    <div class="row justify-content-md-center">
+
+            <form class="col-md-6 col-12">
                 <p class="h5 text-center mb-4">Sign in</p>
 
                 <div class="md-form">
@@ -21,6 +22,8 @@
                     <button class="btn btn-default">Login</button>
                 </div>
             </form>
+    
         </div>
     </div>
+ 
     <!-- Form login -->
