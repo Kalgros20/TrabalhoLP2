@@ -19,7 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          
         public function Trigger(){
             
-            $this->load->view('login/teste');
-        }
+              $email = $this->input->post('email', TRUE);
+                echo "$email";
+            }
     }
 ?>
