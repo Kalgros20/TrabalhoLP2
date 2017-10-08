@@ -9,10 +9,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('static/cabecalho');
             $this->load->view('static/header');
             
-            $this->load->view('login/form');
+            $data['action'] = site_url('Login/Trigger');
+            $this->load->view('login/form','$data');
             
             $this->load->view('static/footer');
             $this->load->view('static/scripts');
+            
+        }
+         
+        public function Trigger(){
             
         }
     }
