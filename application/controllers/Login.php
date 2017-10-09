@@ -2,8 +2,11 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
      class Login extends CI_Controller{
-        
+
+
+
         public function index(){
             
             $this->load->view('static/cabecalho');
@@ -18,12 +21,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
          
         public function Trigger(){
-            
-              $email = $this->input->post('email', TRUE);
-                echo "$email";
 
-                $senha = $this->input->post('senha', TRUE);
-                echo "$senha";
-            }
+            $this->load->model('Login/LoginModel','model');
+            $email = $this->input->post('email', TRUE);
+            $senha = $this->input->post('senha', TRUE);
+            $data['valida_funcionario'] = $this->model->validaFuncionario($email,$senha);
+            
+        }
     }
 ?>
