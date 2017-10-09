@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
      class Login extends CI_Controller{
-
+        
 
 
         public function index(){
@@ -25,8 +25,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->model('Login/LoginModel','model');
             $email = $this->input->post('email', TRUE);
             $senha = $this->input->post('senha', TRUE);
-            $data['valida_funcionario'] = $this->model->validaFuncionario($email,$senha);
+            $data = $this->model->validaFuncionario($email,$senha);
             
+
+
+
         }
     }
 ?>
