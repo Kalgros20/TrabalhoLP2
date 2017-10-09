@@ -21,6 +21,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
               $email = $this->input->post('email', TRUE);
                 echo "$email";
+
+                $senha = $this->input->post('senha', TRUE);
+                echo "$senha";
             }
     }
 ?>

@@ -1,5 +1,7 @@
 <body>
 <br>
+<br>
+<br>
 <div class="container">
     <div class="row justify-content-md-center">
 
@@ -8,13 +10,13 @@
 
                 <div class="md-form">
                     <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="text" id="defaultForm-email" class="form-control" name="email">
+                    <input type="text" id="defaultForm-email" class="form-control" name="email" required="true">
                     <label for="defaultForm-email">Seu email</label>
                 </div>
 
                 <div class="md-form">
                     <i class="fa fa-lock prefix grey-text"></i>
-                    <input type="password" id="defaultForm-pass" class="form-control">
+                    <input type="password" id="defaultForm-pass" class="form-control" name="senha" required="true">
                     <label for="defaltForm-pass">Sua Senha</label>
                 </div>
 
@@ -25,5 +27,10 @@
     
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    
  
     <!-- Form login -->

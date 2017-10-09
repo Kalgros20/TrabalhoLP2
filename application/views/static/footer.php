@@ -75,22 +75,7 @@
         </div>
         <!--/.Footer links-->
         <hr>
-        <!--Call to action-->
-        <div class="call-to-action">
-            <h4 class="mb-5">Material Design for Bootstrap</h4>
-            <ul>
-                <li>
-                    <h5>Get our UI KIT for free</h5>
-                </li>
-                <li>
-                    <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-primary waves-effect waves-light" rel="nofollow">Sign up!</a>
-                </li>
-                <li>
-                    <a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-info waves-effect waves-light" rel="nofollow">Learn more</a>
-                </li>
-            </ul>
-        </div>
-        <!--/.Call to action-->
+        
 
         <!--Copyright-->
         <div class="footer-copyright">
