@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('static/cabecalho');
             $this->load->view('static/header');
             
-            $data['action'] = site_url('Login/Trigger');
+            $data['action'] = 'index.php/Login/Trigger';
             $this->load->view('login/form',$data);
             
             $this->load->view('static/footer');
@@ -23,13 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function Trigger(){
 
             $this->load->model('Login/LoginModel','model');
-            $email = $this->input->post('email', TRUE);
-            $senha = $this->input->post('senha', TRUE);
-            $data = $this->model->validaFuncionario($email,$senha);
             
-
-
-
+            $user = $this->model->validaFuncionario();
+            $cargo = $this->model->carregaCargo($user);
+            
+            
         }
     }
 ?>

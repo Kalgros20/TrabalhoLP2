@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-md-center">
 
-            <form class="col-md-6 col-12" method="post" action="<?= $action ?>">
+            <form class="col-md-6 col-12" method="post" action="<?= base_url($action) ?>">
                 <p class="h5 text-center mb-4">Sign in</p>
 
                 <div class="md-form">

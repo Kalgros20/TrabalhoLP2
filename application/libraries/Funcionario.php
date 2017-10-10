@@ -41,14 +41,28 @@
                 $resultado = $rs->result();
                 foreach($resultado AS $usuario){
                     if($email == $usuario->email && $senha == $usuario->senha){
-                        return true;
+                        return $resultado;
                     }else{
                         return false;
                     }
                     
                 }
-                               
+            }
+            public function carregaCar($data){
+              
+                foreach($data as $row){
+                    $id_usuario =  $row->id_usuario;
+                }
 
+                $sql = "SELECT Cargo FROM FUNCIONARIO WHERE id_funcionario = '$id_usuario'";
+                $query = $this->db->query($sql);
+
+                
+                foreach($query->result() as $rs){
+                    $cargo = $rs->Cargo;
+                }
+                return $cargo;
+                
             }
             
     }
