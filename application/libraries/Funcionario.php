@@ -48,23 +48,46 @@
                     
                 }
             }
-            public function carregaCar($data){
+            public function carregaFunc($data){
               
                 foreach($data as $row){
                     $id_usuario =  $row->id_usuario;
                 }
 
-                $sql = "SELECT Cargo FROM FUNCIONARIO WHERE id_funcionario = '$id_usuario'";
+                $sql = "SELECT * FROM FUNCIONARIO WHERE Id_funcionario = '$id_usuario'";
                 $query = $this->db->query($sql);
 
-                
+                            
                 foreach($query->result() as $rs){
-                    $cargo = $rs->Cargo;
+                    $funcionario = array(
+                        'Id' => $rs->Id_funcionario,
+                        'Cargo' => $rs->Cargo,
+                        'Nome' => $rs->Nome,
+                    );
                 }
-                return $cargo;
-                
+                return $funcionario;
+            }
+
+            public function getListaFuncionario($){
+                         
+              $query = $this->db->get('funcionario');
+              $html = '';
+                foreach($query->result() as $obj){
+                    $html .= listaFuncionario($obj);
+                }
+                return $html;
+                                 
             }
             
+            public function listaFuncionario($obj){
+                echo '<tr>
+                <th scope="row">'.$i.'</th>
+                <td>'.$obj->Nome.'</td>
+                <td>'.$obj->Cargo.'</td>
+                <td>'.$obj->Supervisor.'</td>
+                <td> </td>
+                </tr>';
+            }
     }
 
 ?>

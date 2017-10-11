@@ -25,9 +25,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->model('Login/LoginModel','model');
             
             $user = $this->model->validaFuncionario();
-            $cargo = $this->model->carregaCargo($user);
+            $funcionario = $this->model->carregaFuncionario($user);
             
+            $this->session->set_userdata($funcionario);
+            switch($funcionario['Cargo']){
+                case "Presidente":
+                    redirect('','refresh');
+                    break;
+                case "Colaborador":
+                    redirect('Home/Colaborador','refresh');
+                    break;
+                case "Gerente":
+                    redirect('','refresh');
+                    break;
+                case "Supervisor":
+                    redirect('','refresh');
+                    break;
+
+                default:
+                    echo "Usuário não encontrado";
+            }
             
         }
+
+        
     }
 ?>

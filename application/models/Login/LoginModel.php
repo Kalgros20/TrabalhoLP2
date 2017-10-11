@@ -14,11 +14,12 @@
             return $funcionario->validaFunc($email,$senha);
         }
 
-        public function carregaCargo($data){
+        public function carregaFuncionario($data){
             if(isset($data)){
                 
                 $funcionario = new Funcionario();
-                $funcionario->carregaCar($data);
+                return $funcionario->carregaFunc($data);
+
                 
             }
         }
