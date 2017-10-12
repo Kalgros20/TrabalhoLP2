@@ -44,8 +44,7 @@
                         return $resultado;
                     }else{
                         return false;
-                    }
-                    
+                    }                    
                 }
             }
             public function carregaFunc($data){
@@ -68,25 +67,41 @@
                 return $funcionario;
             }
 
-            public function getListaFuncionario($){
-                         
-              $query = $this->db->get('funcionario');
+            public function getListaFuncionario($funcionario)
+            {
+                $cargo = $funcionario['Cargo'];
+              switch($cargo){
+                case 'Presidente': 
+                    $query = $this->db->get('funcionario');
+                    break;
+                case 'Supervisor':
+                    $supervisor = $funcionario['supervisor'];
+                    $sql = "SELECT * FROM FUNCIONARIO WHERE supervisor = '$supervisor'"
+                    $query = $this->db->query($sql);
+                    break;
+                case 'Colaborador':
+                    break;
+                case 'Gerente':
+                    break;
+              }           
               $html = '';
-                foreach($query->result() as $obj){
-                    $html .= listaFuncionario($obj);
+                    $m = $query->result();
+                    foreach($m as $obj){
+                    $html .= $this->listaFuncionario($obj);
                 }
-                return $html;
-                                 
+                return $html; 
             }
             
-            public function listaFuncionario($obj){
-                echo '<tr>
-                <th scope="row">'.$i.'</th>
+            public function listaFuncionario($obj)
+            {                                
+                $html = 
+                '<tr class="text-center">
                 <td>'.$obj->Nome.'</td>
                 <td>'.$obj->Cargo.'</td>
-                <td>'.$obj->Supervisor.'</td>
-                <td> </td>
+                <td>'.$obj->supervisor.'</td>
                 </tr>';
+                
+                return $html;
             }
     }
 

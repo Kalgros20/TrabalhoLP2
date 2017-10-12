@@ -15,10 +15,10 @@
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
 
     <!-- Material Design Bootstrap -->
-    <link href="<?= base_url('assets/css/mdb.min.css') ?> " rel="stylesheet">
+    <link href="<?= base_url('assets/css/mdb.min.css') ?>" rel="stylesheet">
     
     <!-- Estilo A parte -->
-    <link href="<? base_url('assets/css/style.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
     
     <!-- Template styles -->
     <style rel="stylesheet">
@@ -64,6 +64,7 @@
         footer.page-footer {
             background-color: #555658;
             margin-top: 2rem;
+            
         }
     </style>
 

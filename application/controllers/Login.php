@@ -30,16 +30,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->session->set_userdata($funcionario);
             switch($funcionario['Cargo']){
                 case "Presidente":
-                    redirect('','refresh');
+                    redirect('Home/Presidente','refresh');
                     break;
                 case "Colaborador":
                     redirect('Home/Colaborador','refresh');
                     break;
                 case "Gerente":
-                    redirect('','refresh');
+                    redirect('Home/Gerente','refresh');
                     break;
                 case "Supervisor":
-                    redirect('','refresh');
+                    redirect('Home/Supervisor','refresh');
                     break;
 
                 default:
