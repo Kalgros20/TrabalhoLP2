@@ -8,7 +8,6 @@
             
             <th class="text-center">Nome</th>
             <th class="text-center">Cargo</th>            
-            <th class="text-center">Supervisor</th>
         </tr>
     </thead>
     <!--Table head-->

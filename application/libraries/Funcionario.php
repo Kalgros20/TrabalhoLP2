@@ -3,7 +3,6 @@
             
             private $db;
             private  $nome;
-            private  $idade;
             private  $cargo;
 
             function __construct(){
@@ -18,15 +17,7 @@
             public function getNome(){
                 return $this->nome;
             }
-
-            public function setIdade($idade){
-                $this->idade = $idade;
-            }
-            
-            public function getIdade(){
-                return $this->idade;
-            }
-            
+                     
             public function getCargo(){
                 return $this->cargo;
             }
@@ -47,41 +38,54 @@
                     }                    
                 }
             }
-            public function carregaFunc($data){
+            
+            public function carregaFunc($data)
+            {
               
                 foreach($data as $row){
-                    $id_usuario =  $row->id_usuario;
+                    $id_usuario =  $row->Id_usuario;
                 }
+          
 
-                $sql = "SELECT * FROM FUNCIONARIO WHERE Id_funcionario = '$id_usuario'";
+                $sql = "SELECT * FROM FUNCIONARIO WHERE Id_usuario = '$id_usuario'";
                 $query = $this->db->query($sql);
-
-                            
+                                
                 foreach($query->result() as $rs){
+             
                     $funcionario = array(
                         'Id' => $rs->Id_funcionario,
-                        'Cargo' => $rs->Cargo,
-                        'Nome' => $rs->Nome,
+                        'Id_cargo' => $rs->Id_cargo,
+                        'Id_gerente' => $rs->Id_gerente,
+                        'Id_supervisor' => $rs->Id_supervisor,
+                        'Nome' => $rs->Nome
+                      
                     );
                 }
+                
+      
                 return $funcionario;
             }
 
             public function getListaFuncionario($funcionario)
             {
-                $cargo = $funcionario['Cargo'];
+            $Id_gerente = $funcionario['Id_gerente'];
+            $cargo = $funcionario['Id_cargo'];
               switch($cargo){
-                case 'Presidente': 
-                    $query = $this->db->get('funcionario');
+                case 1: 
+                  $sql = "SELECT Cargo.Nome AS Cargo, Funcionario.Nome AS Nome FROM Funcionario INNER JOIN Cargo ON Funcionario.Id_cargo=Cargo.Id_cargo WHERE Cargo.Nome != 'presidente'";                    
+                  $query = $this->db->query($sql);
                     break;
-                case 'Supervisor':
-                    $supervisor = $funcionario['supervisor'];
-                    $sql = "SELECT * FROM FUNCIONARIO WHERE supervisor = '$supervisor'"
-                    $query = $this->db->query($sql);
+                case 2:
+                  
+                  $sql = "SELECT Cargo.Nome AS Cargo, Funcionario.Nome AS Nome, gerente.Nome As GerenNome FROM Funcionario INNER JOIN Cargo ON Funcionario.Id_cargo = Cargo.Id_cargo INNER JOIN Gerente ON funcionario.Id_gerente = gerente.Id_gerente WHERE funcionario.Id_supervisor= '$Id_gerente'";
+                  $query = $this->db->query($sql);
                     break;
-                case 'Colaborador':
-                    break;
-                case 'Gerente':
+                case 3:
+       
+                  $sql = "SELECT Cargo.Nome AS Cargo, Funcionario.Nome AS Nome FROM Funcionario INNER JOIN Cargo ON Funcionario.Id_cargo = Cargo.Id_cargo where cargo.Id_cargo = 4 AND funcionario.Id_gerente = '$Id_gerente'"; 
+                  $query = $this->db->query($sql);
+                  break;
+                case 4:
                     break;
               }           
               $html = '';
@@ -98,11 +102,24 @@
                 '<tr class="text-center">
                 <td>'.$obj->Nome.'</td>
                 <td>'.$obj->Cargo.'</td>
-                <td>'.$obj->supervisor.'</td>
                 </tr>';
                 
                 return $html;
             }
+            
+            public function listaCabecalho($obj)
+            {
+                $html = 
+                   '<thead class="mdb-color darken-3">
+                        <tr class="text-white">
+            
+                            <th class="text-center">Nome</th>
+                            <th class="text-center">Cargo</th>            
+                        </tr>
+                    </thead>';
+                
+                return $html;
+           }
     }
 
 ?>
