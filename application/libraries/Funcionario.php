@@ -4,6 +4,8 @@
             private $db;
             private  $nome;
             private  $cargo;
+            private $email;
+            private $senha;
 
             function __construct(){
                 $ci = &get_instance();
@@ -72,7 +74,7 @@
             $cargo = $funcionario['Id_cargo'];
               switch($cargo){
                 case 1: 
-                  $sql = "SELECT Cargo.Nome AS Cargo, Funcionario.Nome AS Nome FROM Funcionario INNER JOIN Cargo ON Funcionario.Id_cargo=Cargo.Id_cargo WHERE Cargo.Nome != 'presidente'";                    
+                  $sql = "SELECT cargo.Nome AS Cargo, funcionario.Nome AS Nome FROM funcionario INNER JOIN Cargo ON funcionario.Id_cargo= cargo.Id_cargo WHERE cargo.Nome != 'presidente'";                    
                   $query = $this->db->query($sql);
                     break;
                 case 2:

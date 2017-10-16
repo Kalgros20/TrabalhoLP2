@@ -14,41 +14,13 @@ class HomeController extends CI_Controller{
 
         $this->load->model('Home/HomeModel','model');
         $data['lista'] = $this->model->getListaFunc($funcionario);
+        var_dump($data);
         $this->load->view('listas/lista', $data);
 
         $this->load->view('static/footer');
         $this->load->view('static/scripts');
     }
 
-    public function Gerente(){
-        $this->load->view('static/cabecalho');
-        $this->load->view('static/header');
-
-        $supervisor = $this->session->userdata();
-
-        $this->load->model('Home/HomeModel','model');
-        $data['lista'] = $this->model->getListaFunc($supervisor);
-        $this->load->view('listas/lista', $data);
-
-        $this->load->view('static/footer');
-        $this->load->view('static/scripts');
-
-    }
-    
-    public function Supervisor(){
-        $this->load->view('static/cabecalho');
-        $this->load->view('static/header');
-
-        $supervisor = $this->session->userdata();
-
-        $this->load->model('Home/HomeModel','model');
-        $data['lista'] = $this->model->getListaFunc($supervisor);
-        $this->load->view('listas/lista', $data);
-
-        $this->load->view('static/footer');
-        $this->load->view('static/scripts');
-
-    }
 }
 
 ?>
