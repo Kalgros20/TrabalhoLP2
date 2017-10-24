@@ -12,6 +12,11 @@ class HomeController extends CI_Controller{
 
         $this->load->model('Home/HomeModel','model');
         $data['lista'] = $this->model->getListaFunc($funcionario);
+        
+        $colunas =  $this->model->getColunas($funcionario);
+        $data['col1'] = $colunas[0];
+        $data['col2'] = $colunas[1];
+       
         $this->load->view('listas/lista', $data);
 
         $this->load->view('static/footer');

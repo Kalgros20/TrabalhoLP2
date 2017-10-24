@@ -121,23 +121,29 @@
 
             }
             
-            public function listaCabecalho($obj)
+            public function getColumns($funcionario)
             {
-                $html = 
-                   '<thead class="mdb-color darken-3">
-                        <tr class="text-white">
-            
-                            <th class="text-center">Nome</th>
-                            <th class="text-center">Cargo</th>            
-                        </tr>
-                    </thead>';
-                
-                return $html;
+                if($funcionario['Id_cargo'] == 4){
+                    $colunas = array
+                    (
+                        0 => 'Descricao',
+                        1 => 'DataLimite'
+                    );
+                    return $colunas;
+                }
+                else
+                {
+                    $colunas = array
+                    (
+                        0 => 'Nome',
+                        1 => 'Cargo'
+                    );
+                    return $colunas;
+                }
            }
 
            public function getListaTarefas($funcionario)
            {
-               var_dump($funcionario);
                 $idFunc = $funcionario['Id'];
                 $sql = "Select descricao,DataLimite from tarefas where Id_funcionario = '$idFunc'";
                 $query = $this->db->query($sql);
@@ -149,9 +155,7 @@
                 $html .= $this->listaTarefas($obj);
                 }
                 return $html; 
-
            }
-
     }
 
 ?>
