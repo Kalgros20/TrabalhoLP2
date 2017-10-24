@@ -2,8 +2,8 @@
         class Funcionario{
             
             private $db;
-            private  $nome;
-            private  $cargo;
+            private $nome;
+            private $cargo;
             private $email;
             private $senha;
 
@@ -62,39 +62,39 @@
                         'Nome' => $rs->Nome
                       
                     );
-                }
-                
+                }                
       
                 return $funcionario;
             }
 
             public function getListaFuncionario($funcionario)
             {
+            $Nome =  $funcionario['Nome'];
             $Id_gerente = $funcionario['Id_gerente'];
             $cargo = $funcionario['Id_cargo'];
               switch($cargo){
                 case 1: 
                   $sql = "SELECT cargo.Nome AS Cargo, funcionario.Nome AS Nome FROM funcionario INNER JOIN Cargo ON funcionario.Id_cargo= cargo.Id_cargo WHERE cargo.Nome != 'presidente'";                    
                   $query = $this->db->query($sql);
-                    break;
+                  break;
                 case 2:
-                  
-                  $sql = "SELECT Cargo.Nome AS Cargo, Funcionario.Nome AS Nome, gerente.Nome As GerenNome FROM Funcionario INNER JOIN Cargo ON Funcionario.Id_cargo = Cargo.Id_cargo INNER JOIN Gerente ON funcionario.Id_gerente = gerente.Id_gerente WHERE funcionario.Id_supervisor= '$Id_gerente'";
+                  $sql = "SELECT Cargo.Nome AS Cargo, Funcionario.Nome AS Nome FROM Funcionario INNER JOIN Cargo ON Funcionario.Id_cargo = Cargo.Id_cargo INNER JOIN Gerente ON funcionario.Id_gerente = gerente.Id_gerente WHERE funcionario.Id_supervisor= 1 AND funcionario.nome != '$Nome'";
                   $query = $this->db->query($sql);
-                    break;
+                  break;
                 case 3:
-       
                   $sql = "SELECT Cargo.Nome AS Cargo, Funcionario.Nome AS Nome FROM Funcionario INNER JOIN Cargo ON Funcionario.Id_cargo = Cargo.Id_cargo where cargo.Id_cargo = 4 AND funcionario.Id_gerente = '$Id_gerente'"; 
                   $query = $this->db->query($sql);
                   break;
                 case 4:
-                    break;
-              }           
+
+                  break;
+            }           
               $html = '';
                     $m = $query->result();
-                    foreach($m as $obj){
+                    foreach($m as $obj)
+                    {
                     $html .= $this->listaFuncionario($obj);
-                }
+                    }
                 return $html; 
             }
             
@@ -104,9 +104,21 @@
                 '<tr class="text-center">
                 <td>'.$obj->Nome.'</td>
                 <td>'.$obj->Cargo.'</td>
+               
                 </tr>';
                 
                 return $html;
+            }
+
+            public function listaTarefas($obj){
+                $html = 
+                '<tr class="text-center">
+                <td>'.$obj->descricao.'</td>
+                <td>'.$obj->DataLimite.'</td>
+                </tr>';
+                
+                return $html;
+
             }
             
             public function listaCabecalho($obj)
@@ -122,6 +134,24 @@
                 
                 return $html;
            }
+
+           public function getListaTarefas($funcionario)
+           {
+               var_dump($funcionario);
+                $idFunc = $funcionario['Id'];
+                $sql = "Select descricao,DataLimite from tarefas where Id_funcionario = '$idFunc'";
+                $query = $this->db->query($sql);
+
+                $html = '';
+                $m = $query->result();
+                foreach($m as $obj)
+                {
+                $html .= $this->listaTarefas($obj);
+                }
+                return $html; 
+
+           }
+
     }
 
 ?>

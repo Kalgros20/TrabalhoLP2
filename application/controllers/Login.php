@@ -30,28 +30,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             $this->session->set_userdata($funcionario);
             redirect('HomeController/Home','refresh');
-//            switch($funcionario['Id_cargo']){
-//                case 1:
-//                    redirect('Home/Presidente','refresh');
-//                    break;
-//                case 2:
-//                    redirect('Home/Supervisor','refresh');
-//                    break;
-//                case 3:
-//                    redirect('Home/Gerente','refresh');
-//                    break;
-//                case 4:
-//                    redirect('Home/Colaborador','refresh');
-//                    break;
-//
-//                default:
-//                    echo "Usuário não encontrado";
-//            }
-//            
-//        }
-
         
-    }
+        }
          
      }
 ?>
