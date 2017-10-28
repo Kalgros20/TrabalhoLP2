@@ -26,7 +26,9 @@
             public function setCargo($cargo){
                 $this->cargo = $cargo;
             }
-
+            /**Função que valida se o usuario e senha no momento do login existe no banco
+             * @param email e senha como parametros.
+             */
             public function validaFunc($email,$senha){
                 $sql = "SELECT * FROM USUARIO WHERE  email = '$email'";
                 $rs = $this->db->query($sql);
@@ -40,7 +42,9 @@
                     }                    
                 }
             }
-            
+            /**Função que carrega todos os dados do funcionario para jogar na variavel session
+             * @param Array com os dados da tabela usuario.
+             */
             public function carregaFunc($data)
             {
               
@@ -67,6 +71,10 @@
                 return $funcionario;
             }
 
+            /**Função que lista os Funcionarios de acordo com o que foi carregado anteriormente
+             * @param array com os dados do funcionario
+             */
+
             public function getListaFuncionario($funcionario)
             {
             $Nome =  $funcionario['Nome'];
@@ -85,9 +93,6 @@
                   $sql = "SELECT Cargo.Nome AS Cargo, Funcionario.Nome AS Nome FROM Funcionario INNER JOIN Cargo ON Funcionario.Id_cargo = Cargo.Id_cargo where cargo.Id_cargo = 4 AND funcionario.Id_gerente = '$Id_gerente'"; 
                   $query = $this->db->query($sql);
                   break;
-                case 4:
-
-                  break;
             }           
               $html = '';
                     $m = $query->result();
@@ -97,6 +102,10 @@
                     }
                 return $html; 
             }
+            
+            /**Função que gera o html de acordo com a linha que foi feita o select na tabela
+             * @param array com todos os dados da linha da tabela funcionario
+             */
             
             public function listaFuncionario($obj)
             {                                
@@ -110,6 +119,10 @@
                 return $html;
             }
 
+            /**Função que lista as Tarefas caso o usuário seja colaborador
+             * @param array com todos os dados da linha da tabela funcionario
+             */
+
             public function listaTarefas($obj){
                 $html = 
                 '<tr class="text-center">
@@ -120,6 +133,10 @@
                 return $html;
 
             }
+
+            /** Função que retorna a coluna a ser apresentada de acordo com o cargo
+             * @param Array Funcionario com todos os dados.
+             */
             
             public function getColumns($funcionario)
             {

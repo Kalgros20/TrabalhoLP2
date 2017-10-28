@@ -29,9 +29,6 @@
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
+    
      
     <!-- Form login -->

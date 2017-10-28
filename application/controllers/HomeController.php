@@ -6,7 +6,7 @@ class HomeController extends CI_Controller{
     
     public function Home(){
         $this->load->view('static/cabecalho');
-        $this->load->view('static/header');
+        $this->load->view('static/headerHome');
 
         $funcionario = $this->session->userdata();
 
