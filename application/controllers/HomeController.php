@@ -9,7 +9,7 @@ class HomeController extends CI_Controller{
         $this->load->view('static/headerHome');
 
         $funcionario = $this->session->userdata();
-
+        
         $this->load->model('Home/HomeModel','model');
         $data['lista'] = $this->model->getListaFunc($funcionario);
         

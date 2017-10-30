@@ -41,13 +41,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->model('Login/LoginModel','model');
             
             $user = $this->model->validaFuncionario();
-       
-            $funcionario = $this->model->carregaFuncionario($user);
-            
-            $this->session->set_userdata($funcionario);
-            
-            redirect('HomeController/Home','refresh');
-        
+            if($user)
+            {
+                $funcionario = $this->model->carregaFuncionario($user);
+                $this->session->set_userdata($funcionario);
+                redirect('HomeController/Home','refresh');
+            }
+            else
+            {
+                echo  "<script>alert('Usuário ou senha inválido!');</script>";
+                redirect('Login/Index','refresh');
+            }
+        }
+
+        public function Logout(){
+            $this->session->unset_userdata("Id","Id_cargo","Id_supervisor","Nome");
+            redirect('Login\Index','refresh');
+
         }
          
      }

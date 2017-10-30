@@ -11,7 +11,7 @@
 
                 <div class="md-form">
                     <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="text" id="defaultForm-email" class="form-control" name="email" required="true">
+                    <input type="email" id="defaultForm-email" class="form-control" name="email" required="true">
                     <label for="defaultForm-email">Seu email</label>
                 </div>
 
