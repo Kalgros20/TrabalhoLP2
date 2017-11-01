@@ -1,0 +1,264 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: 28-Out-2017 às 20:16
+-- Versão do servidor: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `lp22`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cargo`
+--
+
+CREATE TABLE `cargo` (
+  `Id_cargo` int(11) NOT NULL,
+  `Nome` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `cargo`
+--
+
+INSERT INTO `cargo` (`Id_cargo`, `Nome`) VALUES
+(1, 'Presidente'),
+(2, 'Supervisor'),
+(3, 'Gerente'),
+(4, 'Colaborador');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `funcionario`
+--
+
+CREATE TABLE `funcionario` (
+  `Id_funcionario` int(11) NOT NULL,
+  `Id_cargo` int(11) DEFAULT NULL,
+  `Id_supervisor` int(11) DEFAULT NULL,
+  `Id_gerente` int(11) DEFAULT NULL,
+  `Id_usuario` int(11) DEFAULT NULL,
+  `Nome` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `funcionario`
+--
+
+INSERT INTO `funcionario` (`Id_funcionario`, `Id_cargo`, `Id_supervisor`, `Id_gerente`, `Id_usuario`, `Nome`) VALUES
+(1, 4, 2, 1, 4, 'Peao da Silva'),
+(2, 1, NULL, NULL, 1, 'Carlysson Andrey de Oliveira'),
+(3, 3, 1, 1, 3, 'Marcelho Chisté'),
+(4, 1, NULL, NULL, 5, 'Paulo Tiberio'),
+(5, 2, 1, 2, 6, 'Joao Vidotti');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `gerente`
+--
+
+CREATE TABLE `gerente` (
+  `Id_gerente` int(11) NOT NULL,
+  `Nome` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `gerente`
+--
+
+INSERT INTO `gerente` (`Id_gerente`, `Nome`) VALUES
+(1, 'Marcelho Chisté'),
+(2, 'Fernando Donizete');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `supervisor`
+--
+
+CREATE TABLE `supervisor` (
+  `Id_supervisor` int(11) NOT NULL,
+  `Nome` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `supervisor`
+--
+
+INSERT INTO `supervisor` (`Id_supervisor`, `Nome`) VALUES
+(1, 'Joao Vidotti'),
+(2, 'Carlos Tiberio');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tarefas`
+--
+
+CREATE TABLE `tarefas` (
+  `Id_tarefa` int(11) NOT NULL,
+  `Id_funcionario` int(11) NOT NULL,
+  `descricao` varchar(50) DEFAULT NULL,
+  `DataLimite` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tarefas`
+--
+
+INSERT INTO `tarefas` (`Id_tarefa`, `Id_funcionario`, `descricao`, `DataLimite`) VALUES
+(1, 1, 'Botar o lixo pra fora', '2017-10-29'),
+(2, 1, 'Varrer a frente do prédio', '2017-10-29');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `Id_usuario` int(11) NOT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `senha` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`Id_usuario`, `email`, `senha`) VALUES
+(1, 'Presidente1@gmail.com', '210596ca'),
+(2, 'Supervisor1@gmail.com', '210596ca'),
+(3, 'Gerente1@gmail.com', '210596ca'),
+(4, 'Colaborador1@gmail.com', '210596ca'),
+(5, 'Presidente2@gmail.com', '210596ca'),
+(6, 'Supervisor2@gmail.com', '210596ca'),
+(7, 'Gerente2@gmail.com', '210596ca'),
+(8, 'Colaborador2@gmail.com', '210596ca');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cargo`
+--
+ALTER TABLE `cargo`
+  ADD PRIMARY KEY (`Id_cargo`);
+
+--
+-- Indexes for table `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD PRIMARY KEY (`Id_funcionario`),
+  ADD KEY `Id_cargo` (`Id_cargo`),
+  ADD KEY `Id_gerente` (`Id_gerente`),
+  ADD KEY `Id_supervisor` (`Id_supervisor`),
+  ADD KEY `Id_usuario` (`Id_usuario`);
+
+--
+-- Indexes for table `gerente`
+--
+ALTER TABLE `gerente`
+  ADD PRIMARY KEY (`Id_gerente`);
+
+--
+-- Indexes for table `supervisor`
+--
+ALTER TABLE `supervisor`
+  ADD PRIMARY KEY (`Id_supervisor`);
+
+--
+-- Indexes for table `tarefas`
+--
+ALTER TABLE `tarefas`
+  ADD PRIMARY KEY (`Id_tarefa`),
+  ADD KEY `Id_funcionario` (`Id_funcionario`);
+
+--
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`Id_usuario`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cargo`
+--
+ALTER TABLE `cargo`
+  MODIFY `Id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `funcionario`
+--
+ALTER TABLE `funcionario`
+  MODIFY `Id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `gerente`
+--
+ALTER TABLE `gerente`
+  MODIFY `Id_gerente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `supervisor`
+--
+ALTER TABLE `supervisor`
+  MODIFY `Id_supervisor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tarefas`
+--
+ALTER TABLE `tarefas`
+  MODIFY `Id_tarefa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `Id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `funcionario`
+--
+ALTER TABLE `funcionario`
+  ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`Id_cargo`) REFERENCES `cargo` (`Id_cargo`),
+  ADD CONSTRAINT `funcionario_ibfk_2` FOREIGN KEY (`Id_gerente`) REFERENCES `gerente` (`Id_gerente`),
+  ADD CONSTRAINT `funcionario_ibfk_3` FOREIGN KEY (`Id_supervisor`) REFERENCES `supervisor` (`Id_supervisor`),
+  ADD CONSTRAINT `funcionario_ibfk_4` FOREIGN KEY (`Id_usuario`) REFERENCES `usuario` (`Id_usuario`);
+
+--
+-- Limitadores para a tabela `tarefas`
+--
+ALTER TABLE `tarefas`
+  ADD CONSTRAINT `tarefas_ibfk_1` FOREIGN KEY (`Id_funcionario`) REFERENCES `funcionario` (`Id_funcionario`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
