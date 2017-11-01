@@ -173,6 +173,10 @@
                 }
                 return $html; 
            }
+
+           public function insertFunc($email,$senha,$nome,$cargo){
+                
+           }
     }
 
 ?>

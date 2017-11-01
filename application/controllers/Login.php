@@ -4,9 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
      class Login extends CI_Controller{
-        
-
-
+       
         public function index(){
             $data['action1'] = 'index.php/Login/cadastro';
 
@@ -39,19 +37,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function Trigger(){
 
             $this->load->model('Login/LoginModel','model');
-            
-            $user = $this->model->validaFuncionario();
-            if($user)
-            {
-                $funcionario = $this->model->carregaFuncionario($user);
-                $this->session->set_userdata($funcionario);
-                redirect('HomeController/Home','refresh');
-            }
-            else
-            {
-                echo  "<script>alert('Usuário ou senha inválido!');</script>";
-                redirect('Login/Index','refresh');
-            }
+            $result = $this->model->validaFuncionario();
+            redirect("$result",'refresh');
+
         }
 
         public function Logout(){
