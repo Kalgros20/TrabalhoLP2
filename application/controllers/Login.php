@@ -25,8 +25,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                
             $this->load->view('static/cabecalho');
             $this->load->view('static/header');
-            
-            $this->load->view('login/cadastro');
+            $this->load->model('Login/LoginModel','model');
+            $data['action'] = 'cadastro';
+             
+            $this->load->view('Login/Cadastro',$data);
+            $result = $this->model->insereFuncionario();
 
             $this->load->view('static/footer');
             $this->load->view('static/scripts');
@@ -37,13 +40,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function Trigger(){
 
             $this->load->model('Login/LoginModel','model');
-            $result = $this->model->validaFuncionario();
+            $result = $this->model->validaUsuario();
             redirect("$result",'refresh');
 
         }
 
         public function Logout(){
-            $this->session->unset_userdata("Id","Id_cargo","Id_supervisor","Nome");
+            $this->session->sess_destroy();
             redirect('Login\Index','refresh');
 
         }

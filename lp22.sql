@@ -52,8 +52,8 @@ INSERT INTO `cargo` (`Id_cargo`, `Nome`) VALUES
 CREATE TABLE `funcionario` (
   `Id_funcionario` int(11) NOT NULL,
   `Id_cargo` int(11) DEFAULT NULL,
-  `Id_supervisor` int(11) DEFAULT NULL,
-  `Id_gerente` int(11) DEFAULT NULL,
+  `Supervisor` varchar(50) DEFAULT NULL,
+  `Gerente` varchar(50) DEFAULT NULL,
   `Id_usuario` int(11) DEFAULT NULL,
   `Nome` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -62,53 +62,12 @@ CREATE TABLE `funcionario` (
 -- Extraindo dados da tabela `funcionario`
 --
 
-INSERT INTO `funcionario` (`Id_funcionario`, `Id_cargo`, `Id_supervisor`, `Id_gerente`, `Id_usuario`, `Nome`) VALUES
-(1, 4, 2, 1, 4, 'Peao da Silva'),
+INSERT INTO `funcionario` (`Id_funcionario`, `Id_cargo`, `Supervisor`, `Gerente`, `Id_usuario`, `Nome`) VALUES
+(1, 4, 'Joao Vidotti', 'Marcelo Chiste', 4, 'Peao da Silva'),
 (2, 1, NULL, NULL, 1, 'Carlysson Andrey de Oliveira'),
-(3, 3, 1, 1, 3, 'Marcelho Chisté'),
-(4, 1, NULL, NULL, 5, 'Paulo Tiberio'),
-(5, 2, 1, 2, 6, 'Joao Vidotti');
-
+(3, 3, 'Joao Vidotti', NULL, 3, 'Marcelo Chisté'),
+(4, 1, NULL, 'Marcelo Chisté', 5, 'Joao Vidotti');
 -- --------------------------------------------------------
-
---
--- Estrutura da tabela `gerente`
---
-
-CREATE TABLE `gerente` (
-  `Id_gerente` int(11) NOT NULL,
-  `Nome` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `gerente`
---
-
-INSERT INTO `gerente` (`Id_gerente`, `Nome`) VALUES
-(1, 'Marcelho Chisté'),
-(2, 'Fernando Donizete');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `supervisor`
---
-
-CREATE TABLE `supervisor` (
-  `Id_supervisor` int(11) NOT NULL,
-  `Nome` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `supervisor`
---
-
-INSERT INTO `supervisor` (`Id_supervisor`, `Nome`) VALUES
-(1, 'Joao Vidotti'),
-(2, 'Carlos Tiberio');
-
--- --------------------------------------------------------
-
 --
 -- Estrutura da tabela `tarefas`
 --
@@ -170,21 +129,8 @@ ALTER TABLE `cargo`
 ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`Id_funcionario`),
   ADD KEY `Id_cargo` (`Id_cargo`),
-  ADD KEY `Id_gerente` (`Id_gerente`),
-  ADD KEY `Id_supervisor` (`Id_supervisor`),
   ADD KEY `Id_usuario` (`Id_usuario`);
 
---
--- Indexes for table `gerente`
---
-ALTER TABLE `gerente`
-  ADD PRIMARY KEY (`Id_gerente`);
-
---
--- Indexes for table `supervisor`
---
-ALTER TABLE `supervisor`
-  ADD PRIMARY KEY (`Id_supervisor`);
 
 --
 -- Indexes for table `tarefas`
@@ -216,18 +162,6 @@ ALTER TABLE `funcionario`
   MODIFY `Id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `gerente`
---
-ALTER TABLE `gerente`
-  MODIFY `Id_gerente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `supervisor`
---
-ALTER TABLE `supervisor`
-  MODIFY `Id_supervisor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `tarefas`
 --
 ALTER TABLE `tarefas`
@@ -248,8 +182,6 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `funcionario`
   ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`Id_cargo`) REFERENCES `cargo` (`Id_cargo`),
-  ADD CONSTRAINT `funcionario_ibfk_2` FOREIGN KEY (`Id_gerente`) REFERENCES `gerente` (`Id_gerente`),
-  ADD CONSTRAINT `funcionario_ibfk_3` FOREIGN KEY (`Id_supervisor`) REFERENCES `supervisor` (`Id_supervisor`),
   ADD CONSTRAINT `funcionario_ibfk_4` FOREIGN KEY (`Id_usuario`) REFERENCES `usuario` (`Id_usuario`);
 
 --

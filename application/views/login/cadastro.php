@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-md-center">
 
-        <form class="col-md-6 col-12" method="post" action="" id="cadastro">
+        <form class="col-md-6 col-12" method="post" action="<?= $action ?>" id="cadastro">
             <p class="h5 text-center mb-4">Cadastro</p>
 
             <div class="md-form">
@@ -18,13 +18,13 @@
 
             <div class="md-form">
                 <i class="fa fa-user prefix grey-text"></i>
-                <input type="password" id="defaultForm-pass" class="form-control" name="senha" required="true">
+                <input type="text" id="defaultForm-pass" class="form-control" name="nome" required="true">
                 <label for="defaltForm-pass">Seu Nome</label>
             </div>
             <div id="cargos">
             <div class="form-group" id="select">
             <label for="sel1">Qual seu cargo: </label>
-                <select class="form-control" id="cargo">
+                <select class="form-control" id="cargo" name="cargo">
                     <option value = "1">Presidente</option>
                     <option value = "2">Supervisor</option>
                     <option value = "3">Gerente</option>

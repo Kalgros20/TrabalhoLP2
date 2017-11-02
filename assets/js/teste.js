@@ -12,7 +12,9 @@ function funcao() {
       mostraGerente(divSelectCargo,gerentes);     
   
     }else if(valorCargo == 3){
-
+      mostraSupervisor(divSelectCargo,supervisores);     
+    }else if (valorCargo == 2){
+      mostraGerente(divSelectCargo,gerentes);     
     }
     
   }
@@ -42,26 +44,25 @@ function funcao() {
   }
 
     function mostraGerente(divSelectCargo,gerentes){
-      var selectSupervisor = document.createElement("select");
-      selectSupervisor.className = "form-control";
-      selectSupervisor.name = "supervisor";
+      var selectGerente = document.createElement("select");
+      selectGerente.className = "form-control";
+      selectGerente.name = "gerente";
   
-      var divSupervisor = document.createElement("div");
-      divSupervisor.className = "form-group";
+      var divGerente = document.createElement("div");
+      divGerente.className = "form-group";
   
-      var labelSupervisor = document.createElement("label");
-      labelSupervisor.textContent = "Qual o seu gerente:";
+      var labelGerente = document.createElement("label");
+      labelGerente.textContent = "Qual o seu gerente:";
   
-      divSelectCargo.appendChild(divSupervisor);
-      divSupervisor.appendChild(labelSupervisor);
-      divSupervisor.appendChild(selectSupervisor);
+      divSelectCargo.appendChild(divGerente);
+      divGerente.appendChild(labelGerente);
+      divGerente.appendChild(selectGerente);
   
       for (var i = 0; i < gerentes.length; i++) {
         var option = document.createElement("option");
         option.value = i;
         option.text = gerentes[i];
-        selectSupervisor.appendChild(option);
-
+        selectGerente.appendChild(option);
     }
   }
 
