@@ -36,7 +36,7 @@ function funcao() {
 
     for (var i = 0; i < supervisores.length; i++) {
       var option = document.createElement("option");
-      option.value = i;
+      option.value = supervisores[i];
       option.text = supervisores[i];
       selectSupervisor.appendChild(option);
     
@@ -60,7 +60,7 @@ function funcao() {
   
       for (var i = 0; i < gerentes.length; i++) {
         var option = document.createElement("option");
-        option.value = i;
+        option.value = gerentes[i];
         option.text = gerentes[i];
         selectGerente.appendChild(option);
     }

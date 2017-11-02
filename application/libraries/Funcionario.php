@@ -163,16 +163,17 @@
             */
            public function insertFunc($dados,$idUsuario)
            {
-
+             $id = $idUsuario;
+             var_dump($idUsuario);
              $funcionario = array();
              $funcionario["Id_cargo"] = $dados["cargo"];
              $funcionario["supervisor"] = $dados["supervisor"];
              $funcionario["gerente"] = $dados["gerente"];
-             $funcionario["Id_usuario"] = intval($idUsuario);
+             $funcionario["Id_usuario"] = intval($id);
              $funcionario["nome"] = $dados["nome"];
-             
-
+             $nome = $funcionario["nome"];
              $this->db->insert('funcionario', $funcionario); 
+        
 
              return true;
            }

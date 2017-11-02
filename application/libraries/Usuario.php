@@ -56,7 +56,10 @@
             $query = $this->db->query($sql);
             $id = $query->result();
 
-            return $id;
+            foreach($id as $row){
+                $idUsuario =  $row->Id_usuario;
+            }    
+            return $idUsuario;
         }
     }
 ?>

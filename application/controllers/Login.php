@@ -44,7 +44,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             redirect("$result",'refresh');
 
         }
+                
+        public function Sobre(){
+            $this->load->view('static/cabecalho');
+            $this->load->view('static/header');
 
+            $this->load->view('static/sobre');
+            
+            $this->load->view('static/footer');
+            $this->load->view('static/scripts');
+        }
+    
         public function Logout(){
             $this->session->sess_destroy();
             redirect('Login\Index','refresh');
