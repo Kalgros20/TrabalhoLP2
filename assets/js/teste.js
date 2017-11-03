@@ -5,66 +5,43 @@ function funcao() {
   var supervisores = ["Joao Vidotti", "Carlos Tibério"];
   var gerentes = ["Fernando Donizete", "Marcelo Chisté"];
 
-    
-  if(valorCargo == 4)
-    {
-      mostraSupervisor(divSelectCargo,supervisores);     
-      mostraGerente(divSelectCargo,gerentes);     
-  
-    }else if(valorCargo == 3){
-      mostraSupervisor(divSelectCargo,supervisores);     
-    }else if (valorCargo == 2){
-      mostraGerente(divSelectCargo,gerentes);     
-    }
-    
+
+  if (valorCargo == 4) {
+    mostraDropDown(divSelectCargo, supervisores,"supervisor");
+    mostraDropDown(divSelectCargo, gerentes,"gerente");
+
+  } else if (valorCargo == 3) 
+  {
+    mostraDropDown(divSelectCargo, supervisores,"supervisor");
+  } else if (valorCargo == 2) {
+    mostraDropDown(divSelectCargo, gerentes,"gerente");
   }
 
-  function mostraSupervisor(divSelectCargo,supervisores){
-    var selectSupervisor = document.createElement("select");
-    selectSupervisor.className = "form-control";
-    selectSupervisor.name = "supervisor";
+}
 
-    var divSupervisor = document.createElement("div");
-    divSupervisor.className = "form-group";
+function mostraDropDown(divSelectCargo, funcionario,cargo) {
+  var select = document.createElement("select");
+  select.className = "form-control";
+  select.name = cargo;
 
-    var labelSupervisor = document.createElement("label");
-    labelSupervisor.textContent = "Qual o seu supervisor:";
+  var div = document.createElement("div");
+  div.className = "form-group";
 
-    divSelectCargo.appendChild(divSupervisor);
-    divSupervisor.appendChild(labelSupervisor);
-    divSupervisor.appendChild(selectSupervisor);
+  var label = document.createElement("label");
+  label.textContent = "Qual o seu supervisor:";
 
-    for (var i = 0; i < supervisores.length; i++) {
-      var option = document.createElement("option");
-      option.value = supervisores[i];
-      option.text = supervisores[i];
-      selectSupervisor.appendChild(option);
-    
-    }
+  divSelectCargo.appendChild(div);
+  div.appendChild(label);
+  div.appendChild(select);
+
+  for (var i = 0; i < funcionario.length; i++) {
+    var option = document.createElement("option");
+    option.value = funcionario[i];
+    option.text = funcionario[i];
+    select.appendChild(option);
+
   }
+}
 
-    function mostraGerente(divSelectCargo,gerentes){
-      var selectGerente = document.createElement("select");
-      selectGerente.className = "form-control";
-      selectGerente.name = "gerente";
-  
-      var divGerente = document.createElement("div");
-      divGerente.className = "form-group";
-  
-      var labelGerente = document.createElement("label");
-      labelGerente.textContent = "Qual o seu gerente:";
-  
-      divSelectCargo.appendChild(divGerente);
-      divGerente.appendChild(labelGerente);
-      divGerente.appendChild(selectGerente);
-  
-      for (var i = 0; i < gerentes.length; i++) {
-        var option = document.createElement("option");
-        option.value = gerentes[i];
-        option.text = gerentes[i];
-        selectGerente.appendChild(option);
-    }
-  }
 
-  document.getElementById("cargo").addEventListener("change", funcao);
-  
+document.getElementById("cargo").addEventListener("change", funcao);
