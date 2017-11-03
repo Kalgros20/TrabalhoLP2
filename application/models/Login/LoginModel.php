@@ -46,7 +46,7 @@
             $dados["gerente"] = $this->input->post('gerente', TRUE);
 
             $this->form_validation->set_rules('email', 'Email Funcionario', 'required|valid_email');
-            $this->form_validation->set_rules('senha', 'Senha', 'required|max_length[8]');
+            $this->form_validation->set_rules('senha', 'Senha', 'required');
             $this->form_validation->set_rules('nome', 'Email Funcionario', 'required');
             $this->form_validation->set_rules('cargo', 'Cargo', 'required');
             
@@ -56,9 +56,16 @@
                 $funcionario = new Funcionario();
                 $usuario = new Usuario();
                 $idUsuario =  $usuario->criaUser($dados);
-                $funcionario->insertFunc($dados,$idUsuario);
+                $result = $funcionario->insertFunc($dados,$idUsuario);
 
-                echo  "<script>alert('Funcionário Cadastrado com Sucesso!');</script>";
+                if($result)
+                {
+                    echo  "<script>alert('Funcionário Cadastrado com Sucesso!');</script>";
+                    unset($idUsuario);
+                    unset($result);
+                    redirect('Login\Index','refresh');
+                    
+                }
             }           
         }
     }

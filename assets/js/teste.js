@@ -1,4 +1,12 @@
+var formGerado = false;
+
 function funcao() {
+  if(formGerado){
+      document.getElementById("dinamico").remove();
+  }
+  
+  formGerado = true;
+
   var selectCargo = document.getElementById("cargo");
   var divSelectCargo = document.getElementById("cargos");
   var valorCargo = selectCargo.value;
@@ -17,15 +25,16 @@ function funcao() {
     mostraDropDown(divSelectCargo, gerentes,"gerente");
   }
 
-}
+} 
 
 function mostraDropDown(divSelectCargo, funcionario,cargo) {
   var select = document.createElement("select");
   select.className = "form-control";
   select.name = cargo;
-
+  
   var div = document.createElement("div");
   div.className = "form-group";
+  div.id = "dinamico";
 
   var label = document.createElement("label");
   label.textContent = "Qual o seu supervisor:";

@@ -22,16 +22,16 @@
                 <label for="defaltForm-pass">Seu Nome</label>
             </div>
             <div id="cargos">
-            <div class="form-group" id="select">
-            <label for="sel1">Qual seu cargo: </label>
-                <select class="form-control" id="cargo" name="cargo">
-                    <option value = "1">Presidente</option>
-                    <option value = "2">Supervisor</option>
-                    <option value = "3">Gerente</option>
-                    <option value = "4">Colaborador</option>
-                </select>
-            </div>
-            </div>
+                <div class="form-group" id="select">
+                    <label for="sel1">Qual seu cargo: </label>
+                        <select class="form-control" id="cargo" name="cargo">
+                            <option value = "1">Presidente</option>
+                            <option value = "2">Supervisor</option>
+                            <option value = "3">Gerente</option>
+                            <option value = "4">Colaborador</option>
+                        </select>
+                    </div>
+                </div>
             <div class="text-center">
                 <button class="btn btn-default">Cadastrar</button>
         </div>    

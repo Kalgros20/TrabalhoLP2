@@ -27,7 +27,7 @@
                 $this->cargo = $cargo;
             }
 
-            /**Função que carrega todos os dados do funcionario para jogar na variavel session
+            /** Função que carrega todos os dados do funcionario para jogar na variavel session
              * @param Array com os dados da tabela usuario.
              */
             public function carregaFunc($data)
@@ -54,7 +54,7 @@
                 return $funcionario;
             }
 
-            /**Função que lista os Funcionarios de acordo com o que foi carregado anteriormente
+            /** Função que lista os Funcionarios de acordo com o que foi carregado anteriormente
              * @param array com os dados do funcionario
              */
 
@@ -101,7 +101,7 @@
                 return $html; 
             }
             
-            /**Função que gera o html de acordo com a linha que foi feita o select na tabela
+            /** Função que gera o html de acordo com a linha que foi feita o select na tabela
              * @param array com todos os dados da linha da tabela funcionario
              */
             
@@ -117,7 +117,7 @@
                 return $html;
             }
 
-            /**Função que lista as Tarefas caso o usuário seja colaborador
+            /** Função que lista as Tarefas caso o usuário seja colaborador
              * @param Array com todos os dados da linha da tabela funcionario
              */
 
@@ -157,8 +157,8 @@
                 }
            }
            
-            /**Função que insere os dados do funcionário pelos forms
-             * da página de cadastro
+            /** Função que insere os dados do funcionário pelos forms
+            * da página de cadastro
             * @param dados,id Usuario um Array com os dados do form da pag de cadastro
             */
            public function insertFunc($dados,$idUsuario)

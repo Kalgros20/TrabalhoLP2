@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Out-2017 às 20:16
--- Versão do servidor: 10.1.28-MariaDB
--- PHP Version: 7.1.10
+-- Generation Time: 03-Nov-2017 às 18:48
+-- Versão do servidor: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -66,8 +66,14 @@ INSERT INTO `funcionario` (`Id_funcionario`, `Id_cargo`, `Supervisor`, `Gerente`
 (1, 4, 'Joao Vidotti', 'Marcelo Chiste', 4, 'Peao da Silva'),
 (2, 1, NULL, NULL, 1, 'Carlysson Andrey de Oliveira'),
 (3, 3, 'Joao Vidotti', NULL, 3, 'Marcelo Chisté'),
-(4, 1, NULL, 'Marcelo Chisté', 5, 'Joao Vidotti');
+(4, 1, NULL, 'Marcelo Chisté', 2, 'Joao Vidotti'),
+(6, 4, 'Carlos Tiberio', 'Fernando Donizete', 8, 'Ashton Kutcher'),
+(7, 2, '', 'Fernando Donizete', 6, 'Carlos Tiberio'),
+(8, 3, 'Carlos Tiberio', NULL, 7, 'Fernando Donizete'),
+(9, 1, NULL, NULL, 5, 'Kalgros Andrey de Oliveira');
+
 -- --------------------------------------------------------
+
 --
 -- Estrutura da tabela `tarefas`
 --
@@ -131,7 +137,6 @@ ALTER TABLE `funcionario`
   ADD KEY `Id_cargo` (`Id_cargo`),
   ADD KEY `Id_usuario` (`Id_usuario`);
 
-
 --
 -- Indexes for table `tarefas`
 --
@@ -154,25 +159,21 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `cargo`
   MODIFY `Id_cargo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `Id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `Id_funcionario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `tarefas`
 --
 ALTER TABLE `tarefas`
   MODIFY `Id_tarefa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
+  MODIFY `Id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- Constraints for dumped tables
 --
