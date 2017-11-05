@@ -19,8 +19,8 @@
             $this->db = $ci->db;
         }
 
-        /**Função que valida se o usuario e senha no momento do login existe no banco
-        * @param email e senha como parametros.
+       /** Função que valida se o usuario e senha no momento do login existe no banco
+        * @param String email e senha como parametros.
         */
         public function validaUser($email,$senha){
             $sql = "SELECT * FROM USUARIO WHERE  email = '$email'";
@@ -41,8 +41,8 @@
          }
 
          
-        /**Função que cria o usuario com email e senha no banco de dados
-        * @param dados um Array com os dados do form da pag de cadastro
+       /** Função que cria o usuario com email e senha no banco de dados
+        * @param Array com os dados do form da pag de cadastro
         */
          public function criaUser($dados)
          {
